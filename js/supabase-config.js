@@ -3,11 +3,11 @@
 // ==============================================================================
 
 window.SUPABASE_CONFIG = {
-  // 1. Replace with your Supabase Project URL (e.g. 'https://abcdefghijklm.supabase.co')
-  url: 'https://YOUR_SUPABASE_PROJECT_URL.supabase.co',
+  // 1. Your Supabase Project URL
+  url: 'https://dfdcydpryengwxffkaqz.supabase.co',
 
-  // 2. Replace with your Supabase Project 'anon' public API key
-  anonKey: 'YOUR_SUPABASE_ANON_KEY',
+  // 2. Your Supabase Project 'anon' public publishable API key
+  anonKey: 'sb_publishable_nBydZXsOlC8aDMbVDz_cug_lq7vHjCh',
 
   // 3. Admin Dashboard Passcode (Change this to whatever PIN you prefer)
   adminPasscode: 'shivani2026'
@@ -23,8 +23,8 @@ window.getSupabaseClient = function () {
   }
 
   var cfg = window.SUPABASE_CONFIG;
-  if (!cfg || !cfg.url || !cfg.anonKey || cfg.url.indexOf('YOUR_SUPABASE_PROJECT_URL') !== -1) {
-    // Config not yet updated with real credentials
+  if (!cfg || !cfg.url || !cfg.anonKey || cfg.anonKey.indexOf('YOUR_SUPABASE_ANON_KEY') !== -1) {
+    // Waiting for anon key from user
     return null;
   }
 
