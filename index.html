@@ -1137,9 +1137,15 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <p>&copy; <span id="year"></span> Shivani Sharma's Parlour. All rights reserved. &middot; <a href="admin.html" class="link-gold" style="opacity:0.75; font-size:0.85rem;" title="Manage Bookings & Enquiries">Admin Portal</a></p>
+      <p>&copy; <span id="year"></span> Shivani Sharma's Parlour. All rights reserved. &middot; <a href="#admin" id="footerAdminLink" class="link-gold" style="opacity:0.75; font-size:0.85rem;" title="Staff Management Portal">Staff Portal &#x1F451;</a></p>
     </div>
   </footer>
+
+  <!-- ============ FLOATING STAFF / ADMIN TRIGGER TAB (ABOVE WHATSAPP) ============ -->
+  <button id="adminFabBtn" class="fab-admin" title="Staff Portal (Bookings &amp; Enquiries)" aria-label="Open Staff Portal">
+    <span class="fab-admin-icon" aria-hidden="true">&#x1F451;</span>
+    <span class="fab-admin-text">Staff</span>
+  </button>
 
   <!-- ============ FLOATING WHATSAPP BUTTON WITH PULSE ANIMATION ============ -->
   <a href="https://wa.me/919579199431?text=Hello%20Shivani%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." class="fab-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
@@ -1179,10 +1185,132 @@
     <p id="lbCaption"></p>
   </dialog>
 
+  <!-- ============ EMBEDDED STAFF / ADMIN MANAGEMENT MODAL ============ -->
+  <div id="adminPanelModal" class="admin-modal-overlay" hidden>
+    <div class="admin-modal-container">
+      <header class="admin-modal-head">
+        <div class="admin-brand-wrap">
+          <span class="admin-brand-icon" aria-hidden="true">&#x1F451;</span>
+          <div>
+            <h3 class="admin-modal-title">Staff Portal &middot; Shivani Sharma's Parlour</h3>
+            <p class="admin-modal-sub">Live Bookings &amp; Enquiries directly synced with Supabase</p>
+          </div>
+        </div>
+        <button class="admin-modal-close" id="adminModalClose" aria-label="Close Staff Portal">&times;</button>
+      </header>
+
+      <div class="admin-modal-body">
+        <!-- 1. Passcode Screen -->
+        <div id="adminLoginScreen" class="admin-login-screen">
+          <div class="admin-login-box">
+            <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">&#x1F510;</div>
+            <h4>Staff Passcode Required</h4>
+            <p>Enter the security passcode to view customer appointments and enquiries.</p>
+            <form id="embeddedAuthForm">
+              <input type="password" id="embeddedPasscode" class="admin-pin-input" placeholder="••••" required autocomplete="current-password">
+              <p id="embeddedAuthErr" class="admin-auth-err"></p>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Unlock Portal</button>
+            </form>
+            <p style="margin-top: 1rem; font-size: 0.74rem; color: var(--grey);">Default PIN: <code style="color:var(--gold);">shivani2026</code></p>
+          </div>
+        </div>
+
+        <!-- 2. Active Dashboard -->
+        <div id="adminDashboardScreen" class="admin-dashboard-screen" hidden>
+          <!-- Stats Summary -->
+          <div class="admin-stats-row">
+            <div class="admin-stat-pill">
+              <span class="lbl">Total Appointments</span>
+              <strong class="val" id="embStatTotal">0</strong>
+            </div>
+            <div class="admin-stat-pill alert">
+              <span class="lbl">Pending ⏳</span>
+              <strong class="val" id="embStatPending">0</strong>
+            </div>
+            <div class="admin-stat-pill">
+              <span class="lbl">Confirmed ✅</span>
+              <strong class="val" id="embStatConfirmed">0</strong>
+            </div>
+            <div class="admin-stat-pill">
+              <span class="lbl">Enquiries 💬</span>
+              <strong class="val" id="embStatEnq">0</strong>
+            </div>
+          </div>
+
+          <!-- Tabs & Actions Bar -->
+          <div class="admin-nav-row">
+            <div class="admin-tabs">
+              <button class="admin-tab-btn active" id="embTabBookings">Bookings (<span id="embCountBookings">0</span>)</button>
+              <button class="admin-tab-btn" id="embTabEnquiries">Enquiries (<span id="embCountEnquiries">0</span>)</button>
+            </div>
+            <div class="admin-actions-right">
+              <button id="embRefreshBtn" class="btn btn-outline btn-sm">⟳ Refresh</button>
+              <button id="embExportCsvBtn" class="btn btn-primary btn-sm">⬇ Export CSV</button>
+              <button id="embLogoutBtn" class="btn btn-outline btn-sm" style="color:#FFB347;">Lock</button>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="admin-search-row">
+            <input type="text" id="embSearchInput" placeholder="🔍 Search by name, phone or service..." class="admin-input-sm">
+            <select id="embStatusFilter" class="admin-select-sm">
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <select id="embDateFilter" class="admin-select-sm">
+              <option value="all">All Dates</option>
+              <option value="today">Today</option>
+              <option value="upcoming">Upcoming</option>
+            </select>
+          </div>
+
+          <!-- Tables -->
+          <div class="admin-table-scroll">
+            <table class="admin-panel-table" id="embBookingsTable">
+              <thead>
+                <tr>
+                  <th>Date &amp; Time</th>
+                  <th>Customer</th>
+                  <th>Service</th>
+                  <th>Notes</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="embBookingsBody">
+                <tr><td colspan="6" style="text-align:center; padding:2rem;">Loading bookings...</td></tr>
+              </tbody>
+            </table>
+
+            <table class="admin-panel-table" id="embEnquiriesTable" hidden>
+              <thead>
+                <tr>
+                  <th>Received</th>
+                  <th>Customer</th>
+                  <th>Contact</th>
+                  <th>Service</th>
+                  <th>Message</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="embEnquiriesBody">
+                <tr><td colspan="6" style="text-align:center; padding:2rem;">Loading enquiries...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Supabase Backend SDK & Configuration -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-config.js"></script>
   <script src="js/services-data.js"></script>
   <script src="js/script.js" defer></script>
+  <script src="js/admin-embedded.js" defer></script>
 </body>
 </html>
