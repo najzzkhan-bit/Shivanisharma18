@@ -619,9 +619,34 @@
       var phone = $('#bkPhone').value.trim();
       var email = $('#bkEmail').value.trim();
       var service = $('#bkService').value;
-      var date = formatDate($('#bkDate').value);
+      var rawDate = $('#bkDate').value;
+      var date = formatDate(rawDate);
       var time = formatTime($('#bkTime').value);
       var notes = $('#bkNotes').value.trim();
+
+      // Asynchronously store booking in Supabase backend if configured
+      var supabase = window.getSupabaseClient ? window.getSupabaseClient() : null;
+      if (supabase) {
+        supabase.from('bookings').insert([{
+          name: name,
+          phone: phone,
+          email: email || null,
+          service: service,
+          booking_date: rawDate,
+          booking_time: time,
+          notes: notes || null,
+          status: 'pending'
+        }]).then(function (result) {
+          if (result.error) {
+            console.warn('Supabase booking notice:', result.error);
+          } else {
+            console.log('✓ Booking recorded in Supabase database');
+          }
+        }).catch(function (err) {
+          console.warn('Supabase booking request failed:', err);
+        });
+      }
+
       var lines = [
         'Hello Shivani,',
         'I would like to request an appointment.',
@@ -647,11 +672,11 @@
         var h = document.createElement('p');
         h.innerHTML = '';
         var strong = document.createElement('strong');
-        strong.textContent = 'Your request is ready.';
+        strong.textContent = 'Your appointment request has been recorded!';
         h.appendChild(strong);
         var p2 = document.createElement('p');
         p2.className = 'hint';
-        p2.textContent = 'Review the message below, then open WhatsApp and tap send. This is a request only. Shivani will confirm availability with you.';
+        p2.textContent = 'We have logged your request. Now tap the green WhatsApp button below to confirm your slot directly with Shivani.';
         var ta = document.createElement('textarea');
         ta.className = 'preview'; ta.rows = 9; ta.readOnly = false; ta.value = msg;
         ta.setAttribute('aria-label', 'WhatsApp message preview. You can edit it before sending.');
@@ -697,6 +722,24 @@
       var contact = $('#enContact').value.trim();
       var service = $('#enService').value;
       var message = $('#enMessage').value.trim();
+
+      // Store enquiry in Supabase backend if configured
+      var supabase = window.getSupabaseClient ? window.getSupabaseClient() : null;
+      if (supabase) {
+        supabase.from('enquiries').insert([{
+          name: name,
+          contact: contact,
+          service: service,
+          message: message,
+          status: 'new'
+        }]).then(function (result) {
+          if (result.error) console.warn('Supabase enquiry notice:', result.error);
+          else console.log('✓ Enquiry recorded in Supabase database');
+        }).catch(function (err) {
+          console.warn('Supabase enquiry request failed:', err);
+        });
+      }
+
       var text = 'Hello Shivani,\n\nName: ' + name + '\nContact: ' + contact + '\nService of interest: ' + service + '\n\nEnquiry: ' + message;
       $('#enWa').href = WA + '?text=' + encodeURIComponent(text);
       $('#enMail').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Enquiry: ' + service) + '&body=' + encodeURIComponent(text);

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Shivani Sharma's Parlour</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Admin Portal Luxury Theme Enhancements */
+    body {
+      background: #14020a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-header {
+      background: rgba(36, 4, 17, 0.95);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .admin-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .admin-brand h1 {
+      font-size: 1.4rem;
+      margin: 0;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+    .admin-brand-tag {
+      background: var(--wine);
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .admin-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .admin-main {
+      flex: 1;
+      max-width: 1400px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    /* Stats Bar */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(66, 6, 30, 0.6) 0%, rgba(22, 2, 10, 0.9) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 10px;
+      padding: 1.4rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s var(--ease), border-color 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--grey);
+      margin-bottom: 0.5rem;
+    }
+    .stat-val {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 0;
+      line-height: 1;
+    }
+    .stat-card.alert .stat-val {
+      color: #FFB347;
+    }
+    /* Tab Controls */
+    .tab-bar {
+      display: flex;
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--grey);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+    }
+    .tab-btn.active {
+      background: var(--burgundy);
+      color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(90, 7, 38, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    /* Filter Bar */
+    .filter-bar {
+      background: rgba(36, 4, 17, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .filter-input {
+      background: #14020a;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--ivory);
+      padding: 0.55rem 0.85rem;
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      flex: 1;
+      min-width: 200px;
+    }
+    .filter-select {
+      background: #14020a;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--ivory);
+      padding: 0.55rem 0.85rem;
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    /* Data Table */
+    .data-card {
+      background: rgba(22, 2, 10, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .table-wrap {
+      overflow-x: auto;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+    .admin-table th {
+      background: rgba(90, 7, 38, 0.3);
+      color: var(--gold-light);
+      padding: 0.9rem 1rem;
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      white-space: nowrap;
+    }
+    .admin-table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: top;
+      color: var(--ivory);
+    }
+    .admin-table tr:hover td {
+      background: rgba(212, 175, 55, 0.03);
+    }
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge.pending {
+      background: rgba(255, 179, 71, 0.2);
+      color: #FFB347;
+      border: 1px solid rgba(255, 179, 71, 0.4);
+    }
+    .badge.confirmed {
+      background: rgba(76, 175, 80, 0.2);
+      color: #81C784;
+      border: 1px solid rgba(76, 175, 80, 0.4);
+    }
+    .badge.completed {
+      background: rgba(33, 150, 243, 0.2);
+      color: #64B5F6;
+      border: 1px solid rgba(33, 150, 243, 0.4);
+    }
+    .badge.cancelled {
+      background: rgba(244, 67, 54, 0.2);
+      color: #E57373;
+      border: 1px solid rgba(244, 67, 54, 0.4);
+    }
+    .action-group {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .btn-xs {
+      padding: 4px 8px;
+      font-size: 0.72rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .btn-xs:hover { opacity: 0.85; }
+    .btn-wa { background: #25D366; color: #000; font-weight: 600; }
+    .btn-call { background: var(--gold); color: #16020A; font-weight: 600; }
+    .status-select {
+      background: #14020a;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--ivory);
+      font-size: 0.75rem;
+      padding: 3px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    /* Passcode Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 0, 5, 0.95);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-box {
+      background: linear-gradient(180deg, #330517 0%, #16020A 100%);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      max-width: 420px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      text-align: center;
+    }
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .modal-desc {
+      color: var(--grey);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .pin-input {
+      background: #1a020d;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
+      font-size: 1.5rem;
+      letter-spacing: 0.3em;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 8px;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    .pin-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+    /* Notice Banner */
+    .setup-banner {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px dashed var(--gold);
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ADMIN PASSCODE MODAL -->
+  <div id="authModal" class="modal-overlay">
+    <div class="modal-box">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👑</div>
+      <h2 class="modal-title">Shivani Sharma's Parlour</h2>
+      <p class="modal-desc">Staff &amp; Management Dashboard. Enter passcode to access bookings.</p>
+      <form id="authForm">
+        <input type="password" id="passcodeInput" class="pin-input" placeholder="••••" required autocomplete="current-password" autofocus>
+        <p id="authError" style="color: #FF6B6B; font-size: 0.8rem; min-height: 1.2rem; margin: 0 0 1rem;"></p>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Unlock Dashboard</button>
+      </form>
+      <p style="margin-top: 1.2rem; font-size: 0.75rem; color: var(--grey);">
+        Default Passcode: <code style="color: var(--gold);">shivani2026</code>
+      </p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-brand">
+        <a href="index.html" title="View Public Website" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+          <img src="assets/images/krishna-brand-logo.jpg" alt="Logo" width="36" height="36" style="border-radius: 50%; border: 1px solid var(--gold);">
+        </a>
+        <h1>Shivani Sharma's Parlour</h1>
+        <span class="admin-brand-tag">Staff Portal</span>
+      </div>
+      <div class="admin-controls">
+        <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;">&larr; View Website</a>
+        <button id="refreshBtn" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">⟳ Refresh</button>
+        <button id="logoutBtn" class="btn btn-outline" style="padding: 0.5rem 0.8rem; font-size: 0.75rem;">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+    
+    <!-- Supabase Connection Notice Banner -->
+    <div id="setupBanner" class="setup-banner" style="display: none;">
+      <div>
+        <strong>ℹ️ Supabase Backend Ready:</strong> To sync live with your cloud database, ensure your <code>url</code> and <code>anonKey</code> are saved in <code>js/supabase-config.js</code>. Showing local demo records in the meantime.
+      </div>
+      <a href="https://supabase.com/dashboard" target="_blank" rel="noopener" class="btn btn-outline" style="font-size: 0.75rem; padding: 4px 10px;">Supabase Dashboard &rarr;</a>
+    </div>
+
+    <!-- STATS SUMMARY -->
+    <section class="stats-grid" aria-label="Quick metrics">
+      <div class="stat-card">
+        <div class="stat-label">Total Appointments</div>
+        <p class="stat-val" id="statTotal">0</p>
+      </div>
+      <div class="stat-card alert">
+        <div class="stat-label">Pending Confirmation ⏳</div>
+        <p class="stat-val" id="statPending">0</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Confirmed Bookings ✅</div>
+        <p class="stat-val" id="statConfirmed">0</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Customer Enquiries 💬</div>
+        <p class="stat-val" id="statEnquiries">0</p>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tabBookings">Bookings &amp; Appointments (<span id="countBookingsTab">0</span>)</button>
+      <button class="tab-btn" id="tabEnquiries">General Enquiries (<span id="countEnquiriesTab">0</span>)</button>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <input type="text" id="searchInput" class="filter-input" placeholder="🔍 Search by customer name, phone number or service...">
+      <select id="statusFilter" class="filter-select">
+        <option value="all">All Statuses</option>
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+      <select id="dateFilter" class="filter-select">
+        <option value="all">All Dates</option>
+        <option value="today">Today</option>
+        <option value="upcoming">Upcoming</option>
+      </select>
+      <button id="exportCsvBtn" class="btn btn-outline" style="padding: 0.55rem 0.9rem; font-size: 0.75rem;">⬇ Export CSV</button>
+    </div>
+
+    <!-- BOOKINGS TABLE VIEW -->
+    <section id="bookingsView" class="data-card">
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Date &amp; Time</th>
+              <th>Customer</th>
+              <th>Service</th>
+              <th>Requirements / Notes</th>
+              <th>Status</th>
+              <th>Direct Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody">
+            <tr>
+              <td colspan="6" style="text-align: center; padding: 2rem; color: var(--grey);">Loading bookings...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ENQUIRIES TABLE VIEW -->
+    <section id="enquiriesView" class="data-card" style="display: none;">
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Received</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Service</th>
+              <th>Enquiry Message</th>
+              <th>Quick Reply</th>
+            </tr>
+          </thead>
+          <tbody id="enquiriesTableBody">
+            <tr>
+              <td colspan="6" style="text-align: center; padding: 2rem; color: var(--grey);">Loading enquiries...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Supabase Backend SDK & Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
