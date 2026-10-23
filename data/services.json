@@ -1,0 +1,142 @@
+{
+  "businessName": "SHIVANI BEAUTY PARLOUR & FASHION DESIGNER",
+  "owner": "Shivani Sharma",
+  "phone": "+91 9579199431",
+  "whatsapp": "https://wa.me/919579199431",
+  "email": "shivanisharma89004@gmail.com",
+  "address": "Opposite Datta Vihar Society, Khadi Machine, Yewlewadi Kondhwa, Pune, Maharashtra, India",
+  "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Opposite+Datta+Vihar+Society%2C+Khadi+Machine%2C+Yewlewadi+Kondhwa%2C+Pune%2C+Maharashtra",
+  "instagram": "https://www.instagram.com/shivanisharma89004gmail.com6/?hl=en",
+  "priceListStatus": "verified",
+  "openingPackages": [
+    {
+      "id": "pkg-199",
+      "name": "Hair Wash & Hair Cut",
+      "price": "199",
+      "currency": "₹",
+      "features": ["Relaxing Hair Wash", "Professional Hair Cut", "Basic Blow Dry"]
+    },
+    {
+      "id": "pkg-299",
+      "name": "Full Waxing & Face Cleanup",
+      "price": "299",
+      "currency": "₹",
+      "features": ["Full Hand Waxing", "Underarms Waxing", "Deep Pore Face Cleanup"]
+    },
+    {
+      "id": "pkg-449",
+      "name": "Dye Application with Wash, Manicure, Pedicure & Threading",
+      "price": "449",
+      "currency": "₹",
+      "features": ["Hair Dye Application with Wash", "Relaxing Manicure", "Soothing Pedicure", "Eyebrow & Upper Lip Threading"]
+    },
+    {
+      "id": "pkg-499",
+      "name": "Full Waxing, Kaya Facial & Threading",
+      "price": "499",
+      "currency": "₹",
+      "features": ["Full Hand & Leg Waxing", "Kaya Rejuvenating Facial", "Eyebrow Threading"]
+    },
+    {
+      "id": "pkg-699",
+      "name": "Bleach, Facial, Any Haircut & Threading",
+      "price": "699",
+      "currency": "₹",
+      "features": ["Skin Glow Bleach", "Custom Skin Facial", "Any Stylish Haircut of Choice", "Eyebrow Threading"]
+    },
+    {
+      "id": "pkg-799",
+      "name": "Bleach, Facial, Pedicure, Hand Waxing with Underarms & Threading",
+      "price": "799",
+      "currency": "₹",
+      "features": ["Instant Glow Bleach", "Herbal / Fruit Facial", "Deluxe Pedicure", "Hand Waxing with Underarms", "Threading"]
+    },
+    {
+      "id": "pkg-899",
+      "name": "Full Waxing, Manicure, Pedicure, Face Cleanup & Threading",
+      "price": "899",
+      "currency": "₹",
+      "features": ["Full Body Waxing (Arms & Legs)", "Luxury Manicure", "Luxury Pedicure", "Deep Face Cleanup", "Eyebrow Threading"]
+    },
+    {
+      "id": "pkg-49",
+      "name": "Baby Hair Cut",
+      "price": "49",
+      "currency": "₹",
+      "features": ["Gentle Baby Hair Cut", "Quick & Safe Styling"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "hair",
+      "title": "Hair Styling, Cuts & Spa",
+      "services": [
+        { "id": "hair-wash-cut", "name": "Hair Wash & Hair Cut", "description": "Professional hair wash and stylish haircut.", "price": "₹199/-" },
+        { "id": "baby-haircut", "name": "Baby Hair Cut", "description": "Gentle, kid-friendly haircut with comfortable styling.", "price": "₹49/-" },
+        { "id": "hair-styling", "name": "Professional Hair Styling", "description": "Everyday and occasion hair styling.", "price": "₹250/-" },
+        { "id": "bridal-hairstyles", "name": "Bridal Hairstyles", "description": "Hairstyles designed for wedding day with floral and jewel accessories.", "price": "₹1,200/-" },
+        { "id": "party-hairstyles", "name": "Party Hairstyles", "description": "Trendy party hairdos, half-up styles, and textured braids.", "price": "₹450/-" },
+        { "id": "curls", "name": "Curls and Elegant Hairdos", "description": "Voluminous curls, soft waves, and structured buns.", "price": "₹500/-" },
+        { "id": "hair-spa", "name": "Hair Spa Ritual", "description": "Deep nourishment and conditioning spa treatment for dull, dry hair.", "price": "₹500/-" },
+        { "id": "hair-smoothening", "name": "Hair Smoothening / Keratin", "description": "Silky straight and frizz-free permanent smoothening.", "price": "From ₹1,999/-" },
+        { "id": "hair-dye", "name": "Dye Application with Wash", "description": "Flawless grey coverage or color application with nourishing wash.", "price": "₹250/-" }
+      ]
+    },
+    {
+      "id": "wedding-glow",
+      "title": "Wedding Glow, Facials & D-Tan",
+      "services": [
+        { "id": "threading-eyebrow", "name": "Eyebrow Threading", "description": "Precision eyebrow shaping to frame your face.", "price": "₹30/-" },
+        { "id": "threading-upperlip", "name": "Upper Lips Threading", "description": "Gentle hair removal for a clean, smooth upper lip.", "price": "₹15/-" },
+        { "id": "threading-forehead", "name": "Forehead Threading", "description": "Clean threading of forehead fuzz for seamless makeup finish.", "price": "₹15/-" },
+        { "id": "cleanup-fruit", "name": "Fruit Cleanup", "description": "Deep-pore dirt and oil removal infused with fruit vitamins.", "price": "₹300/-" },
+        { "id": "facial-fruit", "name": "Fruit Facial", "description": "Refreshing natural fruit facial for radiant, glowing skin.", "price": "₹500/-" },
+        { "id": "facial-gold", "name": "Gold Glow Facial", "description": "Radiance-boosting gold facial for festive and party occasions.", "price": "₹600/-" },
+        { "id": "facial-diamond", "name": "Diamond Radiance Facial", "description": "Skin brightening and polish facial for long-lasting luminosity.", "price": "₹800/-" },
+        { "id": "facial-kaya", "name": "Kaya Rejuvenating Facial", "description": "Intensive hydration and skin soothing treatment.", "price": "₹650/-" },
+        { "id": "skin-bleach", "name": "Glow Bleach / D-Tan", "description": "Instant skin lightening and sun tan removal treatment.", "price": "₹250/-" }
+      ]
+    },
+    {
+      "id": "waxing",
+      "title": "Waxing & Body Care",
+      "services": [
+        { "id": "wax-arms", "name": "Hand Waxing with Underarms", "description": "Gentle waxing leaving arms and underarms silky smooth.", "price": "₹200/-" },
+        { "id": "wax-legs", "name": "Full Leg Waxing", "description": "Complete leg waxing with skin soothing aloe lotion.", "price": "₹300/-" },
+        { "id": "wax-full", "name": "Full Body Waxing", "description": "Complete body waxing package for silky, hair-free skin.", "price": "₹699/-" },
+        { "id": "manicure", "name": "Classic Manicure", "description": "Nail shaping, cuticle care, hand scrub and massage.", "price": "₹250/-" },
+        { "id": "pedicure", "name": "Deluxe Pedicure", "description": "Foot soak, exfoliation, heel softening and relaxing massage.", "price": "₹350/-" }
+      ]
+    },
+    {
+      "id": "bridal",
+      "title": "Bridal & Wedding Studio",
+      "services": [
+        { "id": "bridal-traditional", "name": "Traditional Bridal Makeup", "description": "Classic Indian bridal makeup including Maharashtrian Nauvari draping, jewellery setting and lashes.", "price": "From ₹4,500/-" },
+        { "id": "bridal-maharashtrian", "name": "Maharashtrian Tadka Style", "description": "Authentic Nauvari Paithani drape, traditional Marathi nath, jewellery setting and regal bridal styling.", "price": "From ₹5,500/-" },
+        { "id": "bridal-modern", "name": "Modern Royal Bridal Makeup", "description": "Contemporary HD bridal look, airbrushed finish, hairstyle, draping and contact lenses.", "price": "From ₹6,500/-" },
+        { "id": "bridal-consult", "name": "Bridal Beauty Consultation", "description": "Complete pre-bridal consultation to plan your attire, jewellery, skin prep, and bridal hair.", "price": "Complimentary" },
+        { "id": "sider-makeup", "name": "Family & Sider Makeup", "description": "Elegant makeup and styling for sisters, mothers, and bridesmaids.", "price": "₹1,500/-" }
+      ]
+    },
+    {
+      "id": "mehndi",
+      "title": "Mehndi & Henna Art",
+      "services": [
+        { "id": "mehndi-bridal", "name": "Bridal Mehndi (Full Hands & Feet)", "description": "Intricate bridal patterns, portraits, dulha-dulhan motifs, and dark stain natural henna.", "price": "From ₹2,500/-" },
+        { "id": "mehndi-arabic", "name": "Arabic Mehndi Design", "description": "Bold floral trails, shaded leaves and contemporary Arabic motifs.", "price": "₹200/- per side" },
+        { "id": "mehndi-traditional", "name": "Traditional Mehndi", "description": "Classic Indian peacock, paisley, and lace patterns for hands.", "price": "₹300/- per hand" },
+        { "id": "mehndi-baby-shower", "name": "Baby Shower & Dohale Jevan Mehndi", "description": "Customized themed mehndi celebrating motherhood and special blessings.", "price": "From ₹800/-" }
+      ]
+    },
+    {
+      "id": "modelling",
+      "title": "Modelling, Runway & Glamour",
+      "services": [
+        { "id": "glamour-makeup", "name": "Glamour & Party Makeup", "description": "Radiant glam look with smokey eyes or dewy skin for evening events.", "price": "₹1,200/-" },
+        { "id": "modelling-makeup", "name": "Fashion & Modelling Makeup", "description": "High-definition camera-ready makeup for portfolio photoshoots and runway fashion shows.", "price": "₹2,000/-" },
+        { "id": "editorial-look", "name": "Editorial Beauty Looks", "description": "Creative concept makeup for magazines, studio campaigns, and high-fashion modeling.", "price": "₹2,500/-" }
+      ]
+    }
+  ]
+}
