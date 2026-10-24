@@ -235,8 +235,8 @@
     var filtered = bookingsData.filter(function (b) {
       if (q) {
         var match = (b.name && b.name.toLowerCase().indexOf(q) !== -1) ||
-                    (b.phone && b.phone.indexOf(q) !== -1) ||
-                    (b.service && b.service.toLowerCase().indexOf(q) !== -1);
+          (b.phone && b.phone.indexOf(q) !== -1) ||
+          (b.service && b.service.toLowerCase().indexOf(q) !== -1);
         if (!match) return false;
       }
       if (sf !== 'all' && b.status !== sf) return false;
@@ -265,34 +265,34 @@
       var waLink = 'https://wa.me/91' + cleanPhone + '?text=' + waMessage;
       var callLink = 'tel:+91' + cleanPhone;
 
-      html += 
+      html +=
         '<tr data-id="' + b.id + '">' +
-          '<td>' +
-            '<div style="font-weight:600; color:var(--gold-light);">' + escapeHtml(dateDisplay) + '</div>' +
-            '<div style="font-size:0.75rem; color:var(--grey);">' + escapeHtml(b.booking_time || 'Anytime') + '</div>' +
-            (isToday ? '<span class="badge confirmed" style="font-size:0.65rem; margin-top:3px;">TODAY</span>' : '') +
-          '</td>' +
-          '<td>' +
-            '<div style="font-weight:600;">' + escapeHtml(b.name) + '</div>' +
-            '<div style="font-size:0.75rem; color:var(--gold);">' + escapeHtml(b.phone) + '</div>' +
-            (b.email ? '<div style="font-size:0.72rem; color:var(--grey);">' + escapeHtml(b.email) + '</div>' : '') +
-          '</td>' +
-          '<td><span style="color:var(--ivory); font-weight:500;">' + escapeHtml(b.service) + '</span></td>' +
-          '<td><div style="max-width:240px; font-size:0.78rem; color:var(--grey); line-height:1.4;">' + escapeHtml(b.notes || '—') + '</div></td>' +
-          '<td>' +
-            '<select class="status-select" data-id="' + b.id + '">' +
-              '<option value="pending"' + (b.status === 'pending' ? ' selected' : '') + '>⏳ Pending</option>' +
-              '<option value="confirmed"' + (b.status === 'confirmed' ? ' selected' : '') + '>✅ Confirmed</option>' +
-              '<option value="completed"' + (b.status === 'completed' ? ' selected' : '') + '>💅 Completed</option>' +
-              '<option value="cancelled"' + (b.status === 'cancelled' ? ' selected' : '') + '>❌ Cancelled</option>' +
-            '</select>' +
-          '</td>' +
-          '<td>' +
-            '<div class="action-group">' +
-              '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn-xs btn-wa" title="Send WhatsApp Confirmation">💬 WhatsApp</a>' +
-              '<a href="' + callLink + '" class="btn-xs btn-call" title="Call Client">📞 Call</a>' +
-            '</div>' +
-          '</td>' +
+        '<td>' +
+        '<div style="font-weight:600; color:var(--gold-light);">' + escapeHtml(dateDisplay) + '</div>' +
+        '<div style="font-size:0.75rem; color:var(--grey);">' + escapeHtml(b.booking_time || 'Anytime') + '</div>' +
+        (isToday ? '<span class="badge confirmed" style="font-size:0.65rem; margin-top:3px;">TODAY</span>' : '') +
+        '</td>' +
+        '<td>' +
+        '<div style="font-weight:600;">' + escapeHtml(b.name) + '</div>' +
+        '<div style="font-size:0.75rem; color:var(--gold);">' + escapeHtml(b.phone) + '</div>' +
+        (b.email ? '<div style="font-size:0.72rem; color:var(--grey);">' + escapeHtml(b.email) + '</div>' : '') +
+        '</td>' +
+        '<td><span style="color:var(--ivory); font-weight:500;">' + escapeHtml(b.service) + '</span></td>' +
+        '<td><div style="max-width:240px; font-size:0.78rem; color:var(--grey); line-height:1.4;">' + escapeHtml(b.notes || '—') + '</div></td>' +
+        '<td>' +
+        '<select class="status-select" data-id="' + b.id + '">' +
+        '<option value="pending"' + (b.status === 'pending' ? ' selected' : '') + '>⏳ Pending</option>' +
+        '<option value="confirmed"' + (b.status === 'confirmed' ? ' selected' : '') + '>✅ Confirmed</option>' +
+        '<option value="completed"' + (b.status === 'completed' ? ' selected' : '') + '>💅 Completed</option>' +
+        '<option value="cancelled"' + (b.status === 'cancelled' ? ' selected' : '') + '>❌ Cancelled</option>' +
+        '</select>' +
+        '</td>' +
+        '<td>' +
+        '<div class="action-group">' +
+        '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn-xs btn-wa" title="Send WhatsApp Confirmation">💬 WhatsApp</a>' +
+        '<a href="' + callLink + '" class="btn-xs btn-call" title="Call Client">📞 Call</a>' +
+        '</div>' +
+        '</td>' +
         '</tr>';
     });
 
@@ -350,17 +350,17 @@
 
       html +=
         '<tr>' +
-          '<td><span style="font-size:0.75rem; color:var(--grey);">' + dateStr + '</span></td>' +
-          '<td><strong>' + escapeHtml(e.name) + '</strong></td>' +
-          '<td><span style="color:var(--gold);">' + escapeHtml(e.contact) + '</span></td>' +
-          '<td><span>' + escapeHtml(e.service) + '</span></td>' +
-          '<td><div style="max-width:320px; font-size:0.8rem; line-height:1.4;">' + escapeHtml(e.message) + '</div></td>' +
-          '<td>' +
-            '<div class="action-group">' +
-              (isPhone ? '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn-xs btn-wa">💬 WhatsApp</a>' : '') +
-              '<a href="' + mailLink + '" class="btn-xs btn-call">✉ Email</a>' +
-            '</div>' +
-          '</td>' +
+        '<td><span style="font-size:0.75rem; color:var(--grey);">' + dateStr + '</span></td>' +
+        '<td><strong>' + escapeHtml(e.name) + '</strong></td>' +
+        '<td><span style="color:var(--gold);">' + escapeHtml(e.contact) + '</span></td>' +
+        '<td><span>' + escapeHtml(e.service) + '</span></td>' +
+        '<td><div style="max-width:320px; font-size:0.8rem; line-height:1.4;">' + escapeHtml(e.message) + '</div></td>' +
+        '<td>' +
+        '<div class="action-group">' +
+        (isPhone ? '<a href="' + waLink + '" target="_blank" rel="noopener" class="btn-xs btn-wa">💬 WhatsApp</a>' : '') +
+        '<a href="' + mailLink + '" class="btn-xs btn-call">✉ Email</a>' +
+        '</div>' +
+        '</td>' +
         '</tr>';
     });
 

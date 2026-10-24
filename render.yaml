@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: shivani-sharma-parlour
+    runtime: static
+    buildCommand: echo "No build required"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
