@@ -975,7 +975,6 @@
     initTilt();
     initReviews();
     initGallery();
-    initChat();
     initDivineBlessing();
     initCounters();
     loadData().then(function (data) {
