@@ -1161,5 +1161,21 @@
   <script src="js/supabase-config.js"></script>
   <script src="js/services-data.js"></script>
   <script src="js/script.js" defer></script>
+
+  <!-- Dograh Voice AI Widget -->
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://app.dograh.com/embed/dograh-widget.js?token=emb_sDtUl7_ekGXgYy6xMeHeSr2uVM2Dpjx5B3MVykN2pdQ&environment=production&apiEndpoint=https://api.dograh.com';
+      js.setAttribute('data-dograh-context', JSON.stringify({
+        page_url: window.location.href,
+        today: new Date().toISOString().slice(0, 10)
+      }));
+      js.async = true;
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'dograh-widget'));
+  </script>
 </body>
 </html>
