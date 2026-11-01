@@ -779,6 +779,7 @@
           <h2 id="bookTitle" class="section-title">Book Your Beauty Appointment</h2>
           <p class="lead">Your beauty transformation starts here. Tell us what you need and we will confirm availability on WhatsApp.</p>
         </header>
+
         <form id="bookingForm" class="form-card reveal" novalidate>
           <p class="form-note">A submitted request will prepare a pre-filled WhatsApp message for Shivani to confirm availability with you.</p>
           <div class="form-grid">
@@ -852,6 +853,8 @@
           </div>
           <div id="bkResult" class="result" role="status" aria-live="polite" hidden></div>
         </form>
+        
+
       </div>
     </section>
 
@@ -1141,13 +1144,42 @@
     </div>
   </footer>
 
-  <!-- ============ FLOATING WHATSAPP BUTTON WITH PULSE ANIMATION ============ -->
+  <!-- ============ FLOATING WHATSAPP BUTTON (BOTTOM-RIGHT) ============ -->
   <a href="https://wa.me/919579199431?text=Hello%20Shivani%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." class="fab-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <div class="fab-pulse-ring"></div>
     <div class="fab-pulse-ring delay"></div>
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.3-.7-1.5-.7s-.4-.1-.5.1-.6.7-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2 4.7 4.7 0 0 0 1 2.5 10.7 10.7 0 0 0 4.1 3.6c1.5.7 2.1.7 2.9.6a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
   </a>
 
+  <!-- ============ FLOATING AI VOICE ASSISTANT BOX (OPPOSITE OF WHATSAPP - BOTTOM-LEFT) ============ -->
+  <div class="fab-anjali-box" id="fabAnjaliBox" aria-label="Anjali - AI Voice Assistant">
+    <div class="fab-anjali-header">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="female-avatar-icon" aria-hidden="true">
+        <path d="M12 2C8.686 2 6 4.686 6 8c0 2.21 1.2 4.14 2.97 5.17C5.97 14.54 4 17.5 4 21h2c0-3.314 2.686-6 6-6s6 2.686 6 6h2c0-3.5-1.97-6.46-4.97-7.83C16.8 12.14 18 10.21 18 8c0-3.314-2.686-6-6-6zm0 2c2.21 0 4 1.79 4 4 0 .63-.15 1.22-.41 1.75C14.73 9.28 13.5 9 12 9s-2.73.28-3.59.75C8.15 9.22 8 8.63 8 8c0-2.21 1.79-4 4-4z"/>
+      </svg>
+      <span class="fab-anjali-title">Anjali &ndash; AI Voice Assistant</span>
+    </div>
+    <!-- Dograh Inline Container: Dograh renders inside this container -->
+    <div id="dograh-inline-container">
+      <div class="dograh-inline-status">
+        <div class="dograh-inline-status-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="36" height="36" style="margin:0 auto;display:block;">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <p class="dograh-inline-status-text">Speak with Anjali</p>
+        <p class="dograh-inline-status-subtext">Click below to start voice call</p>
+        <div class="dograh-inline-button-container">
+          <button class="dograh-inline-btn dograh-inline-btn-start" id="dograh-inline-start-btn" onclick="startAnjaliVoiceCall()">
+            Talk to Agent
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ LIGHTBOX VIEWER ============ -->
   <dialog id="lightbox" class="lightbox" aria-label="Image viewer">
@@ -1161,8 +1193,23 @@
   <script src="js/supabase-config.js"></script>
   <script src="js/services-data.js"></script>
   <script src="js/script.js" defer></script>
+  <script>
+    function startAnjaliVoiceCall() {
+      if (window.DograhWidget && typeof window.DograhWidget.start === 'function') {
+        window.DograhWidget.start();
+      } else {
+        var pollTimer = setInterval(function() {
+          if (window.DograhWidget && typeof window.DograhWidget.start === 'function') {
+            clearInterval(pollTimer);
+            window.DograhWidget.start();
+          }
+        }, 200);
+        setTimeout(function() { clearInterval(pollTimer); }, 5000);
+      }
+    }
+  </script>
 
-  <!-- Dograh Voice AI Widget -->
+<!-- Dograh Voice AI Widget -->
   <script>
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
