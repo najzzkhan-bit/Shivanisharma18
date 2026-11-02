@@ -138,7 +138,7 @@
             <div class="hero-showcase-frame">
               <img src="assets/images/bridal-royal-steps.jpg" alt="Signature Royal Bridal Makeover by Shivani Sharma" class="hero-showcase-img" width="580" height="640">
               <div class="hero-showcase-overlay">
-                <span class="showcase-pill">👑 Signature Royal Bridal Artistry</span>
+                <span class="showcase-pill">Signature Royal Bridal Artistry</span>
                 <span class="showcase-caption">Bespoke Bridal Drape &amp; HD Makeover</span>
               </div>
             </div>
@@ -710,7 +710,7 @@
         <!-- Special Opening Value Packages Banner -->
         <div class="packages-section reveal">
           <div class="packages-header">
-            <span class="sparkle-icon">✨</span>
+            
             <h3>Special Opening Value Packages</h3>
             <span class="packages-tag">Limited Time Offers</span>
           </div>
@@ -947,7 +947,7 @@
           <!-- Left: Address & Salon Details -->
           <div class="location-card tilt">
             <div class="loc-header">
-              <span class="loc-icon">📍</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:inline-block;vertical-align:-2px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
               <div>
                 <h3>Shivani Sharma's Parlour</h3>
                 <small class="text-gold">Hair, Bridal, Mehndi &amp; Beauty Studio</small>
@@ -997,7 +997,7 @@
               allowfullscreen>
             </iframe>
             <div class="map-badge">
-              <span>📍 Opposite Datta Vihar Society</span>
+              <span>Opposite Datta Vihar Society</span>
             </div>
           </div>
         </div>
@@ -1163,7 +1163,7 @@
         <span class="anjali-pill-lang">Hindi &bull; English &bull; मराठी</span>
       </div>
       <div class="anjali-pill-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
           <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
           <line x1="12" y1="19" x2="12" y2="23"/>
@@ -1173,7 +1173,7 @@
     </button>
   </div>
 
-  <!-- ============ ANJALI AI VOICE CALL MODAL (BOTTOM-LEFT) ============ -->
+  <!-- ============ ANJALI AI VOICE CALL MODAL (BOTTOM-LEFT, HALF-WHITE PROFESSIONAL) ============ -->
   <div class="anjali-call-modal" id="anjaliVoiceModal" role="dialog" aria-modal="true" aria-labelledby="anjaliModalTitle" hidden>
     <!-- Modal Header -->
     <div class="anjali-modal-header">
@@ -1190,9 +1190,13 @@
       <button class="anjali-close-btn" onclick="toggleAnjaliVoiceModal(false)" aria-label="Minimize voice assistant">&times;</button>
     </div>
 
-    <!-- Multilingual Capability Banner -->
+    <!-- Multilingual Capability Banner (Vector Globe SVG, No Emoji) -->
     <div class="anjali-lang-banner">
-      <span class="anjali-lang-icon">🌐</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="anjali-lang-svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
       <span>You can talk with Anjali in <strong>Hindi, English &amp; Marathi</strong></span>
     </div>
 
@@ -1201,15 +1205,15 @@
       <!-- Idle State Screen -->
       <div class="anjali-screen anjali-screen-idle" id="anjaliScreenIdle">
         <div class="anjali-welcome-bubble">
-          <p><strong>Namaste! 🙏</strong> I am Anjali, your salon receptionist at Shivani Sharma Salon.</p>
-          <p class="anjali-bubble-sub">Ask me about bridal packages, hair styling, skin treatments, or book your appointment in Hindi, English, or Marathi!</p>
+          <p><strong>Namaste!</strong> I am Anjali, your salon receptionist at Shivani Sharma Salon.</p>
+          <p class="anjali-bubble-sub">Ask me about bridal packages, hair styling, skin treatments, or book your appointment in Hindi, English, or Marathi.</p>
         </div>
 
         <div class="anjali-topic-chips">
-          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">💄 Bridal Makeup</button>
-          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">💇 Hair Spa &amp; Cut</button>
-          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">✨ Skin Treatments</button>
-          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">📅 Book Appointment</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">Bridal Makeup</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">Hair Spa &amp; Cut</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">Skin Treatments</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">Book Appointment</button>
         </div>
       </div>
 
@@ -1246,7 +1250,7 @@
       <!-- Idle Call Button -->
       <div class="anjali-footer-idle" id="anjaliFooterIdle">
         <button class="btn-anjali-start-call" onclick="startAnjaliVoiceCall()" id="btnAnjaliStartCall">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
             <line x1="12" y1="19" x2="12" y2="23"/>
@@ -1256,16 +1260,16 @@
         </button>
       </div>
 
-      <!-- Active Call Controls -->
+      <!-- Active Call Controls (Screenshot 1 Reference Style) -->
       <div class="anjali-footer-active" id="anjaliFooterActive" hidden>
         <button class="btn-anjali-end-call" onclick="endAnjaliVoiceCall()" id="btnAnjaliEndCall">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <rect x="6" y="6" width="12" height="12" rx="2"/>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <rect x="5" y="5" width="14" height="14" rx="2"/>
           </svg>
           <span>End call</span>
         </button>
         <button class="btn-anjali-mute-toggle" onclick="toggleAnjaliMicMute()" id="btnAnjaliMute" aria-label="Mute microphone">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" id="iconMicActive">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="iconMicActive" aria-hidden="true">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
             <line x1="12" y1="19" x2="12" y2="23"/>
