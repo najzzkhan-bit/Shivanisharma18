@@ -1151,34 +1151,132 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.3-.7-1.5-.7s-.4-.1-.5.1-.6.7-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2 4.7 4.7 0 0 0 1 2.5 10.7 10.7 0 0 0 4.1 3.6c1.5.7 2.1.7 2.9.6a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
   </a>
 
-  <!-- ============ FLOATING AI VOICE ASSISTANT BOX (OPPOSITE OF WHATSAPP - BOTTOM-LEFT) ============ -->
-  <div class="fab-anjali-box" id="fabAnjaliBox" aria-label="Anjali - AI Voice Assistant">
-    <div class="fab-anjali-header">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="female-avatar-icon" aria-hidden="true">
-        <path d="M12 2C8.686 2 6 4.686 6 8c0 2.21 1.2 4.14 2.97 5.17C5.97 14.54 4 17.5 4 21h2c0-3.314 2.686-6 6-6s6 2.686 6 6h2c0-3.5-1.97-6.46-4.97-7.83C16.8 12.14 18 10.21 18 8c0-3.314-2.686-6-6-6zm0 2c2.21 0 4 1.79 4 4 0 .63-.15 1.22-.41 1.75C14.73 9.28 13.5 9 12 9s-2.73.28-3.59.75C8.15 9.22 8 8.63 8 8c0-2.21 1.79-4 4-4z"/>
-      </svg>
-      <span class="fab-anjali-title">Anjali &ndash; AI Voice Assistant</span>
+  <!-- ============ ANJALI AI VOICE ASSISTANT LAUNCHER (BOTTOM-LEFT, OPPOSITE WHATSAPP) ============ -->
+  <div class="anjali-launcher-wrap" id="anjaliLauncherWrap">
+    <button class="anjali-pill-btn" id="anjaliPillBtn" onclick="toggleAnjaliVoiceModal(true)" aria-label="Talk to Anjali AI Voice Assistant">
+      <div class="anjali-avatar-badge">
+        <img src="assets/images/anjali-avatar.jpg" alt="Anjali AI Voice Assistant" class="anjali-avatar-img">
+        <span class="anjali-online-dot"></span>
+      </div>
+      <div class="anjali-pill-info">
+        <span class="anjali-pill-name">Talk to Anjali</span>
+        <span class="anjali-pill-lang">Hindi &bull; English &bull; मराठी</span>
+      </div>
+      <div class="anjali-pill-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+      </div>
+    </button>
+  </div>
+
+  <!-- ============ ANJALI AI VOICE CALL MODAL (BOTTOM-LEFT) ============ -->
+  <div class="anjali-call-modal" id="anjaliVoiceModal" role="dialog" aria-modal="true" aria-labelledby="anjaliModalTitle" hidden>
+    <!-- Modal Header -->
+    <div class="anjali-modal-header">
+      <div class="anjali-header-left">
+        <div class="anjali-avatar-wrap">
+          <img src="assets/images/anjali-avatar.jpg" alt="Anjali" class="anjali-header-avatar">
+          <span class="anjali-live-pulse-dot" id="anjaliLiveDot"></span>
+        </div>
+        <div class="anjali-header-titles">
+          <h3 id="anjaliModalTitle" class="anjali-header-name">Anjali</h3>
+          <span class="anjali-call-status" id="anjaliCallStatusText">AI Voice Assistant</span>
+        </div>
+      </div>
+      <button class="anjali-close-btn" onclick="toggleAnjaliVoiceModal(false)" aria-label="Minimize voice assistant">&times;</button>
     </div>
-    <!-- Dograh Inline Container: Dograh renders inside this container -->
-    <div id="dograh-inline-container">
-      <div class="dograh-inline-status">
-        <div class="dograh-inline-status-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="36" height="36" style="margin:0 auto;display:block;">
+
+    <!-- Multilingual Capability Banner -->
+    <div class="anjali-lang-banner">
+      <span class="anjali-lang-icon">🌐</span>
+      <span>You can talk with Anjali in <strong>Hindi, English &amp; Marathi</strong></span>
+    </div>
+
+    <!-- Call Visualizer & Content Area -->
+    <div class="anjali-modal-body">
+      <!-- Idle State Screen -->
+      <div class="anjali-screen anjali-screen-idle" id="anjaliScreenIdle">
+        <div class="anjali-welcome-bubble">
+          <p><strong>Namaste! 🙏</strong> I am Anjali, your salon receptionist at Shivani Sharma Salon.</p>
+          <p class="anjali-bubble-sub">Ask me about bridal packages, hair styling, skin treatments, or book your appointment in Hindi, English, or Marathi!</p>
+        </div>
+
+        <div class="anjali-topic-chips">
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">💄 Bridal Makeup</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">💇 Hair Spa &amp; Cut</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">✨ Skin Treatments</button>
+          <button type="button" class="anjali-chip" onclick="startAnjaliVoiceCall()">📅 Book Appointment</button>
+        </div>
+      </div>
+
+      <!-- Active / Connecting Call State Screen -->
+      <div class="anjali-screen anjali-screen-active" id="anjaliScreenActive" hidden>
+        <div class="anjali-visualizer-wrap">
+          <div class="anjali-soundwaves" id="anjaliSoundwaves">
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+          </div>
+          <p class="anjali-call-timer" id="anjaliCallTimer">00:00</p>
+          <p class="anjali-speaking-hint" id="anjaliSpeakingHint">Anjali is listening... Speak anytime</p>
+        </div>
+
+        <div class="anjali-transcripts" id="anjaliTranscripts">
+          <div class="anjali-bubble anjali-bubble-agent">
+            <p>नमस्ते! Shivani Sharma Salon में आपका स्वागत है। मैं आपकी क्या मदद कर सकती हूँ?</p>
+          </div>
+          <div class="anjali-quick-replies">
+            <button type="button" class="quick-reply-pill" onclick="sendAnjaliSpeechPrompt('Aapke rates aur offers kya hain?')">Aapke rates kya hain?</button>
+            <button type="button" class="quick-reply-pill" onclick="sendAnjaliSpeechPrompt('Mujhe bridal makeup book karna hai.')">Bridal appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer Controls -->
+    <div class="anjali-modal-footer">
+      <!-- Idle Call Button -->
+      <div class="anjali-footer-idle" id="anjaliFooterIdle">
+        <button class="btn-anjali-start-call" onclick="startAnjaliVoiceCall()" id="btnAnjaliStartCall">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
             <line x1="12" y1="19" x2="12" y2="23"/>
             <line x1="8" y1="23" x2="16" y2="23"/>
           </svg>
-        </div>
-        <p class="dograh-inline-status-text">Speak with Anjali</p>
-        <p class="dograh-inline-status-subtext">Click below to start voice call</p>
-        <div class="dograh-inline-button-container">
-          <button class="dograh-inline-btn dograh-inline-btn-start" id="dograh-inline-start-btn" onclick="startAnjaliVoiceCall()">
-            Talk to Agent
-          </button>
-        </div>
+          <span>Start Voice Call with Anjali</span>
+        </button>
+      </div>
+
+      <!-- Active Call Controls -->
+      <div class="anjali-footer-active" id="anjaliFooterActive" hidden>
+        <button class="btn-anjali-end-call" onclick="endAnjaliVoiceCall()" id="btnAnjaliEndCall">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <rect x="6" y="6" width="12" height="12" rx="2"/>
+          </svg>
+          <span>End call</span>
+        </button>
+        <button class="btn-anjali-mute-toggle" onclick="toggleAnjaliMicMute()" id="btnAnjaliMute" aria-label="Mute microphone">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" id="iconMicActive">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </button>
       </div>
     </div>
+
+    <!-- Hidden Dograh container to anchor Dograh WebRTC runtime -->
+    <div id="dograh-inline-container" style="display:none !important;"></div>
   </div>
 
   <!-- ============ LIGHTBOX VIEWER ============ -->
@@ -1194,19 +1292,137 @@
   <script src="js/services-data.js"></script>
   <script src="js/script.js" defer></script>
   <script>
+    var anjaliCallTimerInterval = null;
+    var anjaliCallSeconds = 0;
+    var isAnjaliMuted = false;
+
+    function toggleAnjaliVoiceModal(show) {
+      var modal = document.getElementById('anjaliVoiceModal');
+      var launcher = document.getElementById('anjaliLauncherWrap');
+      if (show) {
+        modal.hidden = false;
+        launcher.style.display = 'none';
+      } else {
+        modal.hidden = true;
+        launcher.style.display = 'block';
+      }
+    }
+
+    function updateAnjaliTimerDisplay() {
+      var m = Math.floor(anjaliCallSeconds / 60);
+      var s = anjaliCallSeconds % 60;
+      var timerEl = document.getElementById('anjaliCallTimer');
+      if (timerEl) {
+        timerEl.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+      }
+    }
+
     function startAnjaliVoiceCall() {
+      toggleAnjaliVoiceModal(true);
+      document.getElementById('anjaliScreenIdle').hidden = true;
+      document.getElementById('anjaliScreenActive').hidden = false;
+      document.getElementById('anjaliFooterIdle').hidden = true;
+      document.getElementById('anjaliFooterActive').hidden = false;
+      document.getElementById('anjaliLiveDot').classList.add('pulse');
+      document.getElementById('anjaliCallStatusText').textContent = 'Connecting...';
+
+      // Reset & start timer
+      anjaliCallSeconds = 0;
+      updateAnjaliTimerDisplay();
+      clearInterval(anjaliCallTimerInterval);
+      anjaliCallTimerInterval = setInterval(function() {
+        anjaliCallSeconds++;
+        updateAnjaliTimerDisplay();
+      }, 1000);
+
+      // Trigger WebRTC call via Dograh
       if (window.DograhWidget && typeof window.DograhWidget.start === 'function') {
-        window.DograhWidget.start();
+        window.DograhWidget.start().then(function() {
+          document.getElementById('anjaliCallStatusText').textContent = 'Call in progress';
+        }).catch(function(err) {
+          console.warn('Dograh start error:', err);
+        });
       } else {
         var pollTimer = setInterval(function() {
           if (window.DograhWidget && typeof window.DograhWidget.start === 'function') {
             clearInterval(pollTimer);
-            window.DograhWidget.start();
+            window.DograhWidget.start().then(function() {
+              document.getElementById('anjaliCallStatusText').textContent = 'Call in progress';
+            });
           }
-        }, 200);
-        setTimeout(function() { clearInterval(pollTimer); }, 5000);
+        }, 250);
+        setTimeout(function() { clearInterval(pollTimer); }, 6000);
       }
     }
+
+    function endAnjaliVoiceCall() {
+      clearInterval(anjaliCallTimerInterval);
+      if (window.DograhWidget && typeof window.DograhWidget.stop === 'function') {
+        try { window.DograhWidget.stop(); } catch(e){}
+      }
+      document.getElementById('anjaliScreenIdle').hidden = false;
+      document.getElementById('anjaliScreenActive').hidden = true;
+      document.getElementById('anjaliFooterIdle').hidden = false;
+      document.getElementById('anjaliFooterActive').hidden = true;
+      document.getElementById('anjaliLiveDot').classList.remove('pulse');
+      document.getElementById('anjaliCallStatusText').textContent = 'AI Voice Assistant';
+    }
+
+    function toggleAnjaliMicMute() {
+      isAnjaliMuted = !isAnjaliMuted;
+      var muteBtn = document.getElementById('btnAnjaliMute');
+      if (window.DograhWidget && typeof window.DograhWidget.getState === 'function') {
+        var state = window.DograhWidget.getState();
+        if (state && state.stream) {
+          var audioTracks = state.stream.getAudioTracks();
+          audioTracks.forEach(function(track) {
+            track.enabled = !isAnjaliMuted;
+          });
+        }
+      }
+      if (isAnjaliMuted) {
+        muteBtn.classList.add('muted');
+        muteBtn.title = 'Unmute microphone';
+      } else {
+        muteBtn.classList.remove('muted');
+        muteBtn.title = 'Mute microphone';
+      }
+    }
+
+    function sendAnjaliSpeechPrompt(text) {
+      var transcripts = document.getElementById('anjaliTranscripts');
+      if (transcripts) {
+        var userBubble = document.createElement('div');
+        userBubble.className = 'anjali-bubble anjali-bubble-user';
+        userBubble.innerHTML = '<p>' + text + '</p>';
+        transcripts.appendChild(userBubble);
+      }
+      var idleScreen = document.getElementById('anjaliScreenIdle');
+      if (!idleScreen.hidden) {
+        startAnjaliVoiceCall();
+      }
+    }
+
+    // Connect Dograh callbacks once ready
+    window.addEventListener('load', function() {
+      var checkDograh = setInterval(function() {
+        if (window.DograhWidget) {
+          clearInterval(checkDograh);
+          if (typeof window.DograhWidget.onCallConnected === 'function') {
+            window.DograhWidget.onCallConnected(function() {
+              document.getElementById('anjaliCallStatusText').textContent = 'Call in progress';
+              document.getElementById('anjaliLiveDot').classList.add('pulse');
+            });
+          }
+          if (typeof window.DograhWidget.onCallDisconnected === 'function') {
+            window.DograhWidget.onCallDisconnected(function() {
+              endAnjaliVoiceCall();
+            });
+          }
+        }
+      }, 300);
+      setTimeout(function() { clearInterval(checkDograh); }, 10000);
+    });
   </script>
 
 <!-- Dograh Voice AI Widget -->

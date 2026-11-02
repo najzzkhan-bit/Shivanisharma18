@@ -3516,130 +3516,10 @@ select {
 }
 
 /* ==========================================================================
-   ANJALI AI VOICE ASSISTANT - FLOATING VOICE BOX (BOTTOM-LEFT, OPPOSITE OF WHATSAPP)
+   ANJALI AI VOICE ASSISTANT - FLOATING WIDGET & CALL MODAL (BOTTOM-LEFT, OPPOSITE WHATSAPP)
    ========================================================================== */
 
-.fab-anjali-box {
-  position: fixed;
-  left: 1.8rem;
-  bottom: 1.8rem;
-  z-index: 10000;
-  background: linear-gradient(145deg, rgba(74, 6, 32, 0.96) 0%, rgba(24, 2, 11, 0.98) 100%);
-  border: 1.5px solid var(--gold);
-  border-radius: 16px;
-  padding: 0.85rem 1.1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(212, 175, 55, 0.35);
-  max-width: 290px;
-  min-width: 230px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.fab-anjali-box:hover {
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 24px rgba(212, 175, 55, 0.5);
-}
-
-.fab-anjali-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  color: var(--gold-light);
-}
-
-.fab-anjali-header .female-avatar-icon {
-  color: var(--gold);
-  flex-shrink: 0;
-}
-
-.fab-anjali-title {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 0.92rem;
-  letter-spacing: 0.4px;
-  color: var(--white);
-  white-space: nowrap;
-}
-
-/* Dograh Inline Container inside floating box */
-#dograh-inline-container,
-.dograh-inline-container {
-  min-height: auto !important;
-  padding: 4px 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.dograh-inline-status {
-  text-align: center;
-  width: 100%;
-}
-
-.dograh-inline-status-icon {
-  width: 36px !important;
-  height: 36px !important;
-  margin: 0 auto 6px !important;
-  color: var(--gold) !important;
-}
-
-.dograh-inline-status-icon svg {
-  width: 100% !important;
-  height: 100% !important;
-  stroke: var(--gold) !important;
-}
-
-.dograh-inline-status-text {
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
-  margin: 0 0 2px !important;
-  color: var(--white) !important;
-}
-
-.dograh-inline-status-subtext {
-  font-size: 0.78rem !important;
-  color: var(--gold-light) !important;
-  opacity: 0.85;
-  margin: 0 0 10px !important;
-}
-
-.dograh-inline-button-container {
-  display: flex !important;
-  justify-content: center !important;
-  margin-top: 6px !important;
-}
-
-.dograh-inline-btn {
-  padding: 8px 22px !important;
-  font-size: 0.88rem !important;
-  font-weight: 600 !important;
-  border-radius: 20px !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-}
-
-.dograh-inline-btn-start {
-  background: linear-gradient(135deg, var(--gold) 0%, #b38728 100%) !important;
-  color: #1a0209 !important;
-  box-shadow: 0 3px 12px rgba(212, 175, 55, 0.4) !important;
-}
-
-.dograh-inline-btn-start:hover {
-  filter: brightness(1.15) !important;
-  transform: translateY(-2px) !important;
-}
-
-.dograh-inline-btn-end {
-  background: #dc2626 !important;
-  color: #ffffff !important;
-  box-shadow: 0 3px 12px rgba(220, 38, 38, 0.4) !important;
-}
-
-/* Ensure WhatsApp button is locked and completely clear on the bottom-right */
+/* Enforce WhatsApp button is always fixed on the bottom-right */
 .fab-whatsapp {
   position: fixed !important;
   right: 1.8rem !important;
@@ -3648,32 +3528,530 @@ select {
   z-index: 10001 !important;
 }
 
+/* 1. Launcher Pill (Collapsed Floating Button on Bottom-Left) */
+.anjali-launcher-wrap {
+  position: fixed;
+  left: 1.8rem;
+  bottom: 1.8rem;
+  z-index: 10000;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.anjali-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  background: linear-gradient(135deg, rgba(74, 6, 32, 0.96) 0%, rgba(24, 2, 11, 0.98) 100%);
+  border: 1.5px solid var(--gold);
+  border-radius: 9999px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 16px rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  color: var(--white);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.anjali-pill-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65), 0 0 24px rgba(212, 175, 55, 0.5);
+  border-color: #ffd700;
+}
+
+.anjali-avatar-badge {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.anjali-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  display: block;
+}
+
+.anjali-online-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+  background: #10b981;
+  border: 2px solid #1a0209;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.anjali-pill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.anjali-pill-name {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.3px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.anjali-pill-lang {
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.anjali-pill-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin-left: 2px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.anjali-pill-btn:hover .anjali-pill-icon {
+  background: var(--gold);
+  color: #1a0209;
+  transform: scale(1.08);
+}
+
+/* 2. Expanded Voice Call Modal (Bottom-Left) */
+.anjali-call-modal {
+  position: fixed;
+  left: 1.8rem;
+  bottom: 1.8rem;
+  z-index: 10002;
+  width: 350px;
+  max-width: calc(100vw - 2.4rem);
+  background: linear-gradient(165deg, rgba(38, 4, 18, 0.98) 0%, rgba(16, 1, 8, 0.99) 100%);
+  border: 1.5px solid var(--gold);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: anjaliModalSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes anjaliModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.anjali-call-modal[hidden] {
+  display: none !important;
+}
+
+/* Modal Header */
+.anjali-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(74, 6, 32, 0.5);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.anjali-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.anjali-avatar-wrap {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.anjali-header-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+}
+
+.anjali-live-pulse-dot {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+  background: #10b981;
+  border: 2px solid #1a0209;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.anjali-live-pulse-dot.pulse {
+  animation: anjaliPulseAnim 1.5s infinite;
+}
+
+@keyframes anjaliPulseAnim {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.anjali-header-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.anjali-header-name {
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.anjali-call-status {
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.anjali-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--gold-light);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.anjali-close-btn:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Multilingual Capability Banner */
+.anjali-lang-banner {
+  background: rgba(212, 175, 55, 0.12);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  color: #fff2c6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+.anjali-lang-banner strong {
+  color: var(--gold);
+}
+
+/* Modal Body */
+.anjali-modal-body {
+  padding: 14px 16px;
+  max-height: 290px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Idle Screen */
+.anjali-welcome-bubble {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 14px 14px 14px 4px;
+  padding: 12px 14px;
+  color: var(--white);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.anjali-welcome-bubble strong {
+  color: var(--gold);
+}
+
+.anjali-bubble-sub {
+  margin-top: 6px;
+  color: #d1c5b8;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.anjali-topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.anjali-chip {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--gold-light);
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 6px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.anjali-chip:hover {
+  background: var(--gold);
+  color: #1a0209;
+  transform: translateY(-1px);
+}
+
+/* Active Screen */
+.anjali-visualizer-wrap {
+  text-align: center;
+  padding: 12px 0 8px;
+}
+
+.anjali-soundwaves {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 38px;
+  margin-bottom: 8px;
+}
+
+.anjali-soundwaves .wave-bar {
+  width: 4px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 4px;
+  animation: soundWavePulse 1.2s ease-in-out infinite alternate;
+}
+
+.anjali-soundwaves .wave-bar:nth-child(1) { height: 12px; animation-delay: 0.1s; }
+.anjali-soundwaves .wave-bar:nth-child(2) { height: 22px; animation-delay: 0.25s; }
+.anjali-soundwaves .wave-bar:nth-child(3) { height: 32px; animation-delay: 0.4s; }
+.anjali-soundwaves .wave-bar:nth-child(4) { height: 18px; animation-delay: 0.15s; }
+.anjali-soundwaves .wave-bar:nth-child(5) { height: 28px; animation-delay: 0.3s; }
+.anjali-soundwaves .wave-bar:nth-child(6) { height: 16px; animation-delay: 0.2s; }
+.anjali-soundwaves .wave-bar:nth-child(7) { height: 24px; animation-delay: 0.35s; }
+
+@keyframes soundWavePulse {
+  0% { transform: scaleY(0.4); opacity: 0.5; }
+  100% { transform: scaleY(1.3); opacity: 1; }
+}
+
+.anjali-call-timer {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0 0 4px;
+  letter-spacing: 0.5px;
+}
+
+.anjali-speaking-hint {
+  font-size: 0.78rem;
+  color: #c9b09a;
+  margin: 0;
+}
+
+/* Transcript bubbles (Reference Screenshot 1 style) */
+.anjali-transcripts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.anjali-bubble {
+  padding: 9px 13px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+.anjali-bubble-agent {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  color: var(--white);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.anjali-bubble-user {
+  background: rgba(212, 175, 55, 0.22);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #fff6d9;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.anjali-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.quick-reply-pill {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--gold-light);
+  font-size: 0.74rem;
+  padding: 5px 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-reply-pill:hover {
+  background: var(--gold);
+  color: #1a0209;
+}
+
+/* Modal Footer Controls */
+.anjali-modal-footer {
+  padding: 12px 16px;
+  background: rgba(26, 2, 11, 0.85);
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.btn-anjali-start-call {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 20px;
+  background: linear-gradient(135deg, var(--gold) 0%, #b38728 100%);
+  color: #1a0209;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-anjali-start-call:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.anjali-footer-active {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-anjali-end-call {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-anjali-end-call:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.btn-anjali-mute-toggle {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-anjali-mute-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-anjali-mute-toggle.muted {
+  background: #ef4444;
+  border-color: #ef4444;
+}
+
 @media (max-width: 640px) {
-  .fab-anjali-box {
+  .anjali-launcher-wrap {
     left: 0.8rem;
     bottom: 0.8rem;
-    max-width: 210px;
-    min-width: 180px;
-    padding: 0.65rem 0.85rem;
   }
-  .fab-anjali-title {
-    font-size: 0.8rem;
+  .anjali-pill-btn {
+    padding: 5px 12px 5px 5px;
+    gap: 8px;
   }
-  .dograh-inline-status-icon {
-    width: 28px !important;
-    height: 28px !important;
-    margin-bottom: 4px !important;
+  .anjali-avatar-badge {
+    width: 38px;
+    height: 38px;
   }
-  .dograh-inline-status-text {
-    font-size: 0.85rem !important;
+  .anjali-pill-name {
+    font-size: 0.84rem;
   }
-  .dograh-inline-status-subtext {
-    font-size: 0.72rem !important;
-    margin-bottom: 6px !important;
+  .anjali-pill-lang {
+    font-size: 0.68rem;
   }
-  .dograh-inline-btn {
-    padding: 6px 16px !important;
-    font-size: 0.8rem !important;
+  .anjali-pill-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .anjali-call-modal {
+    left: 0.8rem;
+    bottom: 0.8rem;
+    width: calc(100vw - 1.6rem);
   }
   .fab-whatsapp {
     right: 0.8rem !important;
